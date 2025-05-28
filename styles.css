@@ -1,0 +1,219 @@
+h1 {
+  text-align: center;
+  animation: slide-in 1s ease-out;
+}
+
+@keyframes slide-in {
+  from {
+    transform: translateY(-100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+body {
+    background: white
+    text-align: center;
+    padding: 2rem;
+    font-family: Arial;
+    animation: pulse 10s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    background-color: white;
+  }
+  50% {
+    background-color: #fcfcb1;
+  }
+    100% {
+    background-color: #f4c3fa;
+  }
+}
+
+.marker-group {
+    display: flex;
+    overflow: visible;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+}
+
+.marker {
+  width: 200px;
+  height: 25px;
+  animation: popIn 0.6s ease-out;
+  transition: transform 0.4s ease;
+  position: relative;
+  display: flex;
+  margin: 1rem;
+  background: #eee;
+}
+
+@keyframes popIn {
+    0% {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.marker-body {
+    margin-left: 60px;
+    height: 25px;
+    width: 200px;
+    background: c
+}
+
+.cap {
+  width: 60px;
+  height: 25px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  transition: transform 0.4s ease;
+  z-index: 2;
+}
+
+.marker.red .cap {
+  background: linear-gradient(rgb(122, 74, 14), rgb(245, 62, 113), rgb(162, 27, 27));
+}
+
+.marker.green .cap {
+  background: linear-gradient(#55680D, #71F53E, #116C31);
+}
+
+.marker.blue .cap {
+  background: linear-gradient(hsl(186, 76%, 16%), hsl(223, 90%, 60%), hsl(240, 56%, 42%));
+}
+
+.marker:hover .cap {
+    transform: translateX(-20px);
+}
+
+.sleeve {
+  width: 140px;
+  height: 25px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-left: 10px double rgba(0, 0, 0, 0.75);
+}
+
+.cap, .sleeve {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.marker.red {
+  background: linear-gradient(rgb(122, 74, 14), rgb(245, 62, 113), rgb(162, 27, 27));
+  box-shadow: 0 0 20px 0 rgba(83, 14, 14, 0.8);
+}
+
+.marker.green {
+  background: linear-gradient(#55680D, #71F53E, #116C31);
+  box-shadow: 0 0 20px 0 #3B7E20CC;
+}
+
+.marker.blue {
+  background: linear-gradient(hsl(186, 76%, 16%), hsl(223, 90%, 60%), hsl(240, 56%, 42%));
+  box-shadow: 0 0 20px 0 hsla(223, 59%, 31%, 0.8);
+}
+
+.pencil-group {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+}
+
+.pencil {
+    position: relative;
+    display: inline-block;
+    width: 150px;
+    height: 25px;
+    margin: 20px;
+    animation: popIn 0.6s ease-out;
+}
+
+.pencil::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: -20px;
+    width: 20px;
+    height: 25px;
+    background: linear-gradient(to left, var(--lead-color) 0 30%, #d4b483 30% 100%);
+    clip-path: polygon(100% 50%, 0 0, 0 100%);
+    z-index: 2;
+}
+
+.pencil.yellow {
+    background-color: #f7e017; 
+    --lead-color: #f7e017;
+    background: linear-gradient(#c9bb3a, #f7e017, #918b0d);
+    box-shadow: 0 0 20px 0 #8f852c;
+}
+
+.pencil.pink {
+    background-color: #f781f3; 
+    --lead-color: #f781f3;
+    background: linear-gradient(#bf9dbe, #f781f3, #785077);
+    box-shadow: 0 0 20px 0 #946093;
+}
+
+.pencil.purple {
+    background-color: #7807f0; 
+    --lead-color: #7807f0;
+    background: linear-gradient(#5a3187, #7807f0,#360b63);
+    box-shadow: 0 0 20px 0 #69467a;
+}
+
+@keyframes wiggle {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(-3deg); }
+    50% { transform: rotate(3deg); }
+    75% { transform: rotate(-2deg); }
+    100% { transform: rotate(0deg); }
+}
+
+.pencil:hover {
+    animation: wiggle 0.4s ease-in-out;
+    transform-origin: left center;
+}
+
+.confetti-wrapper {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+  overflow: visible;
+  z-index: 9999;
+}
+
+.confetti {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  opacity: 1;
+  will-change: transform, opacity;
+}
+
+@keyframes explode {
+  0% {
+    opacity: 1;
+    transform: translateY(0) rotateX(0deg) rotateY(0deg) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(600px) rotateX(720deg) rotateY(720deg) scale(1.8);
+  }
+}
